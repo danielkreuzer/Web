@@ -1,0 +1,229 @@
+<div class="cards-pf" style="background-color: transparent">
+  <h1>{{stationName}}</h1>
+<div class="row row-cards-pf">
+  <div class="col-sm-6">
+    <pfng-card
+               [headerTemplate]="spacesHeaderTemplate1">
+      <ng-template #spacesHeaderTemplate1>
+        <div class="row">
+          <div class="col-sm-6">
+            <h2>Graph</h2>
+          </div>
+          <div class="col-sm-6">
+            <h3>{{unitDisplayed}}</h3>
+          </div>
+        </div>
+      </ng-template>
+      <div>
+        <canvas id="chartDetails" height="150">{{chart}}</canvas>
+      </div>
+    </pfng-card>
+  </div>
+  <div class="col-sm-6">
+    <pfng-card
+               [headerTemplate]="spacesHeaderTemplate2">
+      <ng-template #spacesHeaderTemplate2>
+        <h2>Graph settings</h2>
+      </ng-template>
+      <div
+        class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="startDate">Start Date</label>
+          <div class="col-sm-10">
+            <mat-form-field>
+              <input [(ngModel)]="startDate" id="startDate" matInput [matDatepicker]="picker" placeholder="Choose a date">
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="sTime">Start Time</label>
+          <div class="col-sm-10">
+            hour <input min="0" max="24" [(ngModel)]="shour" id="sTime" type="number" placeholder="h" required>:
+            minute <input min="0" max="60" [(ngModel)]="sminute"  type="number" placeholder="m" required>:
+            second <input min="0" max="60" [(ngModel)]="ssecound"  type="number" placeholder="s" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="endDate">End Date</label>
+          <div class="col-sm-10">
+            <mat-form-field>
+              <input [(ngModel)]="endDate" id="endDate" matInput [matDatepicker]="picker2" placeholder="Choose a date">
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="eTime">End Time</label>
+          <div class="col-sm-10">
+            hour <input min="0" max="24" [(ngModel)]="ehour" id="eTime" type="number" placeholder="h" required>:
+            minute <input min="0" max="60" [(ngModel)]="eminute"  type="number" placeholder="m" required>:
+            second <input min="0" max="60" [(ngModel)]="esecound"  type="number" placeholder="s" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="GroupBySelect">Group by</label>
+          <div class="col-sm-10">
+            <mat-form-field>
+            <select [(ngModel)]="graphSettings.groupBy" id="GroupBySelect" matNativeControl required>
+              <option value="1">Hour</option>
+              <option value="2">Day</option>
+              <option value="3">Week</option>
+              <option value="4">Month</option>
+              <option value="5">Year</option>
+              <option value="0">None</option>
+            </select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="CalculateBySelect">Calculate by</label>
+          <div class="col-sm-10">
+            <mat-form-field>
+              <select [(ngModel)]="graphSettings.calculateBy" id="CalculateBySelect" matNativeControl required>
+                <option value="0">Temperature</option>
+                <option value="1">Air pressure</option>
+                <option value="2">Rainfall</option>
+                <option value="3">Humidity</option>
+                <option value="4">Wind speed</option>
+              </select>
+            </mat-form-field>
+            <ng-container *ngIf="graphSettings.calculateBy == 0">
+              <mat-form-field>
+              <select [(ngModel)]="selectedUnit" id="UnitSelect" matNativeControl>
+                <option value="0">°C</option>
+                <option value="1">°F</option>
+              </select>
+              </mat-form-field>
+            </ng-container>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="TypeSelect">Type</label>
+          <div class="col-sm-10">
+            <mat-form-field>
+              <select [(ngModel)]="graphSettings.type" id="TypeSelect" matNativeControl required>
+                <option value="sum">Sum</option>
+                <option value="avg">Average</option>
+                <option value="min">Minimum</option>
+                <option value="max">Maximum</option>
+                <option value="no">No summation</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+        <button class="btn btn-success" style="margin: 5pt" (click)="graphButtonClicked()">Show graph</button>
+        <button class="btn btn-on" style="margin: 5pt;" (click)="saveButtonClicked()">Save settings as preference</button>
+      </div>
+      </pfng-card>
+  </div>
+</div>
+<div class="row row-cards-pf">
+  <div class="col-sm-6">
+    <pfng-card
+               [headerTemplate]="spacesHeaderTemplate3">
+      <ng-template #spacesHeaderTemplate3>
+        <h2>Graph table</h2>
+      </ng-template>
+      <pfng-table
+        [columns]="columns"
+        [config]="tableConfig"
+        [rows]="rows"
+        (onActivate)="handleOnActivate($event)"
+        (onActionSelect)="handleAction($event)"
+        (onFilterChange)="filterChanged($event)"
+        (onPageNumberChange)="handlePageNumber($event)"
+        (onPageSizeChange)="handlePageSize($event)"
+        (onReorder)="handleOnReorder($event)"
+        (onResize)="handleOnResize($event)"
+        (onScroll)="handleOnScroll($event)"
+        (onSelectionChange)="handleSelectionChange($event)"
+        (onSortChange)="handleSortChanged($event)">
+      </pfng-table>
+      <!-- Column templates -->
+      <ng-template #valueTemplate let-row="row">
+        <span>{{row.value}}</span>
+      </ng-template>
+      <ng-template #timeTemplate let-row="row">
+        <span>{{row.time}}</span>
+      </ng-template>
+    </pfng-card>
+
+  </div>
+  <div class="col-sm-6">
+    <pfng-card
+               [headerTemplate]="spacesHeaderTemplate4">
+      <ng-template #spacesHeaderTemplate4>
+        <div class="row">
+          <div class="col-sm-6">
+            <h2>Station Details</h2>
+          </div>
+          <div class="col-sm-6" align="right">
+            <button (click)="addToFavourites()" class="btn btn-gh" style="margin: 15pt;">Add to favourites</button>
+          </div>
+        </div>
+      </ng-template>
+
+      <div class="panel-group" id="accordion-markup">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion-markup" href="#collapseOne">
+                Location
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <div class="row" style="font-size: large">
+                <div class="col-sm-6">
+                  Zip: <b>{{stationZip}}</b><br>
+                  Community: <b>{{stationLocation}}</b><br>
+                  District: <b>{{stationDistrict}}</b><br>
+                  Province: <b>{{stationProvince}}</b>
+                </div>
+                <div class="col-sm-6">
+                  Latitude: <b>{{stationLatitude}}</b><br>
+                  Longitude: <b>{{stationLongitude}}</b><br>
+                  Altitude: <b>{{stationAltitude}}</b>m
+                  <button (click)="openGMaps()">Open Location in Google Maps</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion-markup" href="#collapseTwo" class="collapsed">
+                Type
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body" style="font-size: large">
+              Type: <b>{{stationType}}</b><br>
+              Manufacturer: <b>{{stationManufacturer}}</b>
+              </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion-markup" href="#collapseThree" class="collapsed">
+                Possessor
+              </a>
+            </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse">
+            <div class="panel-body" style="font-size: large">
+              Name: <b>{{stationCreator}}</b>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </pfng-card>
+  </div>
+</div>
+</div>

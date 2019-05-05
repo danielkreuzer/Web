@@ -1,0 +1,92 @@
+<div class="cards-pf" style="background-color: transparent">
+  <h1>Station Settings</h1>
+  <div class="row row-cards-pf">
+    <div class="col-sm-4">
+      <pfng-card
+                 [headerTemplate]="spacesHeaderTemplate1">
+        <ng-template #spacesHeaderTemplate1>
+        </ng-template>
+        <div style="margin-bottom: 35pt">
+        <pfng-table
+          [columns]="columns"
+          [config]="tableConfig"
+          [rows]="rows"
+          (onActivate)="handleOnActivate($event)"
+          (onActionSelect)="handleAction($event)"
+          (onFilterChange)="filterChanged($event)"
+          (onPageNumberChange)="handlePageNumber($event)"
+          (onPageSizeChange)="handlePageSize($event)"
+          (onReorder)="handleOnReorder($event)"
+          (onResize)="handleOnResize($event)"
+          (onScroll)="handleOnScroll($event)"
+          (onSelectionChange)="handleSelectionChange($event)"
+          (onSortChange)="handleSortChanged($event)">
+        </pfng-table>
+        <!-- Column templates -->
+        <ng-template #nameTemplate let-row="row">
+          <span>{{row.name}}</span>
+        </ng-template>
+        <ng-template #buttonTemplate let-row="row">
+          <button (click)="onDetailButtonClick(row.id)">Details</button>
+        </ng-template>
+        </div>
+        <button class="btn btn-success" (click)="addStation()">Add Station</button>
+      </pfng-card>
+
+    </div>
+    <div class="col-sm-8">
+      <pfng-card
+                 [headerTemplate]="spacesHeaderTemplate">
+        <ng-template #spacesHeaderTemplate>
+          <h2>{{selectedStation}}</h2>
+        </ng-template>
+        <div
+          class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="Name">Name</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="selectedName" id="Name" placeholder="Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="sts">Station Type</label>
+            <div class="col-sm-10">
+              <select [(ngModel)]="selectedType" id="sts">
+                <option *ngFor="let t of typeArr" [ngValue]="t.id">{{t.model}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="com">Community</label>
+            <div class="col-sm-10">
+              <select [(ngModel)]="selectedCommunity" id="com">
+                <option *ngFor="let c of communitiesArr" [ngValue]="c.id">{{c.zipCode}} {{c.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="long">Longitude</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="selectedLongitude" id="long" placeholder="Longitude">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="lat">Latitude</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="selectedLatitude" id="lat" placeholder="Latitude">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="alt">Altitude</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="selectedAltitude" id="alt" placeholder="Altitude">
+            </div>
+          </div>
+          <button style="margin: 5pt" class="btn btn-success" (click)="saveChanges()">Save changes</button>
+          <button style="margin: 5pt" class="btn btn-on" (click)="deleteStation()">Delete station</button>
+          <button style="margin: 5pt" class="btn btn-on" (click)="addMeasruementForStation()">Add measurement for station</button>
+        </div>
+      </pfng-card>
+    </div>
+  </div>
+</div>

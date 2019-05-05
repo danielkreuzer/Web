@@ -1,0 +1,68 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+CREATE DATABASE IF NOT EXISTS `ratingshop` DEFAULT CHARACTER SET latin1 COLLATE latin1_general_ci;
+USE `ratingshop`;
+
+CREATE TABLE User (
+  id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  userName varchar(255) UNIQUE KEY NOT NULL,
+  passwordHash char(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE Product (
+  id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  categroyId int(11),
+  name varchar(255) NOT NULL,
+  manufacturer varchar(255) NOT NULL,
+  userComment LONGTEXT,
+  userCreated varchar(255) NOT NULL,
+  creationDate DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE Rating (
+  id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  productId int(11) NOT NULL,
+  userCreated varchar(255) NOT NULL,
+  creationDate DATETIME NOT NULL,
+  userComment LONGTEXT,
+  userRating int(2),
+  FOREIGN KEY (productId)
+    REFERENCES product(id)
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE Category (
+  id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO User (id, userName, passwordHash)
+    VALUES (1, 'scr4', '$2y$10$0dhe3ngxlmzgZrX6MpSHkeoDQ.dOaceVTomUq/nQXV0vSkFojq.VG'),
+    (2, 'scr41', '$2y$10$0dhe3ngxlmzgZrX6MpSHkeoDQ.dOaceVTomUq/nQXV0vSkFojq.VG');
+
+INSERT INTO Product (id, categroyId, name, manufacturer, userComment, userCreated, creationDate) VALUES
+  (1, 1, 'Cupcakemaker Amazon', 'Cupcake paradise', 'Full automatic cupcake maker, seen on amazon.at/blabla',
+  'scr4', NOW()),
+  (2, 1, 'Juicero organic juice pressing machine', 'Juicero',
+   'Machine that produces juice out of a bag with unknown content, seen on Kickstarter',
+  'scr4', NOW()),
+  (3, 2, 'Surface Book v1', 'Microsoft', 'Convertible from Microsoft with touchscreen and pen, seen on microsoft.com',
+  'scr4', NOW()),
+  (4, 3, 'Trek bike marlin 4', 'Trek', 'Nice mountainbike seen on bikester.at', 'scr4', NOW());
+
+INSERT INTO Rating (productId, userCreated, creationDate, userComment, userRating) VALUES
+  (1, 'scr41', NOW(), 'Nice product!', 1),
+  (2, 'scr41', NOW(), 'I dont like this product!', 5),
+  (3, 'scr41', NOW(), 'Nice product!', 1),
+  (4, 'scr41', NOW(), 'Nice!', 2);
+
+INSERT INTO Category (id, name) VALUES
+  (1, 'Kitchen'),
+  (2, 'Electronics'),
+  (3, 'Sports'),
+  (4, 'Other');
+
+
+COMMIT;

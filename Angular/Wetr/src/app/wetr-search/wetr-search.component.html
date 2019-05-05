@@ -1,0 +1,48 @@
+<div class="padding-15" style="margin-bottom: 35pt">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group" style="background-color: white">
+        <pfng-table
+          [columns]="columns"
+          [config]="tableConfig"
+          [rows]="rows"
+          (onActivate)="handleOnActivate($event)"
+          (onActionSelect)="handleAction($event)"
+          (onFilterChange)="filterChanged($event)"
+          (onPageNumberChange)="handlePageNumber($event)"
+          (onPageSizeChange)="handlePageSize($event)"
+          (onReorder)="handleOnReorder($event)"
+          (onResize)="handleOnResize($event)"
+          (onScroll)="handleOnScroll($event)"
+          (onSelectionChange)="handleSelectionChange($event)"
+          (onSortChange)="handleSortChanged($event)">
+        </pfng-table>
+        <!-- Column templates -->
+        <ng-template #nameTemplate let-row="row">
+          <span>{{row.name}}</span>
+        </ng-template>
+        <ng-template #zipCodeTemplate let-row="row">
+          <span>{{row.zip}}</span>
+        </ng-template>
+        <ng-template #communityTemplate let-row="row">
+          <span>{{row.community}}</span>
+        </ng-template>
+        <ng-template #districtTemplate let-row="row">
+          <span>{{row.district}}</span>
+        </ng-template>
+        <ng-template #provinceTemplate let-row="row">
+          <span>{{row.province}}</span>
+        </ng-template>
+        <ng-template #manufacturerTemplate let-row="row">
+          <span>{{row.manufacturer}}</span>
+        </ng-template>
+        <ng-template #typeTemplate let-row="row">
+          <span>{{row.type}}</span>
+        </ng-template>
+        <ng-template #buttonTemplate let-row="row">
+          <button (click)="onDetailButtonClick(row.id)">Details</button>
+        </ng-template>
+</div>
+    </div>
+  </div>
+</div>

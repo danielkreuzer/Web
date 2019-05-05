@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="de" xmlns="http://www.w3.org/1999/html">
+
+<head>
+
+    <link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Gasthof Kreuzer</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog-home.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Frank Ruhl Libre', cursive;
+        }
+    </style>
+
+</head>
+
+<body class="d-flex flex-column">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.12';
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Navigation -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <div class="headerpic" id="header">
+            <!-- img-fluid makes picture height responsive to -->
+        <img src="img/layout/logoDetailseite.png" class="img-fluid" alt="Logo GH-Kreuzer" width="800" height="100">
+        </div>
+        <!--<a class="navbar-brand" href="#">Gasthof Kreuzer</a>-->
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Gasthof
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Kellerbar.html">Kellerbar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Contact.html">Kontakt</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="shop.html">Shop</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Page Content -->
+<div class="container flex-grow">
+
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+
+            <h1 class="my-4">Aktuelles aus dem Gasthof
+            </h1>
+
+            <div id="postTimeline"></div>
+
+            <!-- Pagination with JS-->
+            <ul class="pagination justify-content-center mb-4">
+                <li class="page-item">
+                    <a class="page-link" id="btnNewer">&larr; Neuere</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" id="btnOlder">Ältere    &rarr;</a>
+                </li>
+            </ul>
+            <div class="text-center" id="paginationSide"></div>
+            <br>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            <!-- Side Widget -->
+            <!--<div class="card my-4">
+                <h5 class="card-header">Gasthof Kreuzer</h5>
+                <div class="card-body">
+                    Hier findest du Aktuelles aus dem Gasthof Kreuzer!
+                </div>
+            </div>-->
+            <div class="card my-4">
+                <h5 class="card-header">Facebook</h5>
+                <div class="card-body">
+                    <div class="fb-page" data-href="https://www.facebook.com/gasthof.kreuzer/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/gasthof.kreuzer/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/gasthof.kreuzer/">Gasthof Kreuzer</a></blockquote></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<button onclick="topFunction()" id="myBtn" title="Go to top">^</button>
+
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container text-center">
+        <p class="m-0 text-white">Copyright &copy; Gasthof Kreuzer 2018</p><br>
+        <a class="text-primary" href="impressum.html" id="impressum">Impressum</a>
+    </div>
+
+    <!-- /.container -->
+</footer>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.bundle.js"></script>
+<script src="js/blog-home.js"></script>
+
+<!-- Own JavaScipt -->
+<script src="js/post-handling.js"></script>
+
+</body>
+
+</html>

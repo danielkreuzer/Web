@@ -1,0 +1,56 @@
+<div class="cards-pf" style="background-color: transparent">
+  <h1>Station Name</h1>
+  <div class="row row-cards-pf">
+    <div class="col-sm-12">
+      <pfng-card
+                 [headerTemplate]="spacesHeaderTemplate">
+        <ng-template #spacesHeaderTemplate>
+          <h2>Add measurement for station: "{{stationName}}"</h2>
+        </ng-template>
+        <div class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="Value">Value</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="measurementValue" id="Value" type="text" placeholder="Value" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="TypeM">Type</label>
+            <div class="col-sm-10">
+              <select [(ngModel)]="typeId" id="TypeM" required>
+                <option *ngFor="let t of typeArr" [ngValue]="t.id">{{t.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="UnitM">Unit</label>
+            <div class="col-sm-10">
+              <select [(ngModel)]="unitId" id="UnitM" required>
+                <option *ngFor="let u of unitArr" [ngValue]="u.id">{{u.longName}} [{{u.shortName}}]</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="startDate">Date</label>
+            <div class="col-sm-10">
+              <mat-form-field>
+                <input [(ngModel)]="dateTime" [matDatepicker]="picker" id="startDate" matInput placeholder="Choose a date">
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="Time">Time</label>
+            <div class="col-sm-10">
+              hour <input min="0" max="24" [(ngModel)]="hour" id="Time" type="number" placeholder="h" required>:
+              minute <input min="0" max="60" [(ngModel)]="minute"  type="number" placeholder="m" required>:
+              second <input min="0" max="60" [(ngModel)]="secound"  type="number" placeholder="s" required>
+            </div>
+          </div>
+          <button style="margin: 5pt" class="btn btn-success" (click)="addMeasurement()">Add Measurement</button>
+          <button style="margin: 5pt" class="btn btn-on" (click)="cancel()">Cancel</button>
+        </div>
+      </pfng-card>
+    </div>
+  </div>
+</div>

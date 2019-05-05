@@ -1,0 +1,17 @@
+{
+    "extends": "../tslint.json",
+    "rules": {
+        "directive-selector": [
+            true,
+            "attribute",
+            "wea5",
+            "camelCase"
+        ],
+        "component-selector": [
+            true,
+            "element",
+            "wea5",
+            "kebab-case"
+        ]
+    }
+}

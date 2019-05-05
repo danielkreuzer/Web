@@ -1,0 +1,62 @@
+<div class="cards-pf" style="background-color: transparent">
+  <div class="row row-cards-pf">
+    <div class="col-sm-12">
+      <pfng-card [config]="config"
+                 [headerTemplate]="spacesHeaderTemplate"
+                 (onActionSelect)="handleActionSelect($event)">
+        <ng-template #spacesHeaderTemplate>
+          <div class="card-pf-heading-details">
+            <a (click)="removeFavourite()" class="btn btn-link custom-card-btn-link">
+              <i class="fa fa-minus-circle fa-2x"></i>
+            </a>
+          </div>
+          <h2 class="card-pf-title">
+            {{stationName}}
+          </h2>
+        </ng-template>
+        <div class="row">
+          <div class="col-sm-4">
+            <div style="font-size: xx-large"><b>{{temperature}}</b></div><br>
+            {{temperatureTime}}
+          </div>
+          <div class="col-sm-4">
+            <i class="fa {{arrowType}} fa-5x" aria-hidden="true"></i>
+          </div>
+          <div class="col-sm-4">
+            <canvas id="{{chartId}}" height="25">{{chart}}</canvas>
+            <!--<div class="chart-container" style="position: relative; height:40vh; width:80vw">
+
+            </div>-->
+          </div>
+        </div>
+
+        <div class="panel-group" id="accordion-markup" style="padding-top: 5pt">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion-markup" href="#{{collapseId}}">
+                  Station Details
+                </a>
+              </h4>
+            </div>
+            <div id="{{collapseId}}" class="panel-collapse collapse">
+              <div class="panel-body">
+                  <div class="row" style="font-size: large">
+                    <div class="col-sm-6">
+                      Station Location: <b>{{stationLocation}}</b><br>
+                      Zip Code:         <b>{{stationZipCode}}</b>
+                    </div>
+                    <div class="col-sm-6">
+                      Station Type:           <b>{{stationType}}</b><br>
+                      Station Manufacturer:   <b>{{stationManufactorer}}</b>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--<pfng-sparkline-chart [config]="chartConfig" [chartData]="chartData" ></pfng-sparkline-chart>-->
+      </pfng-card>
+    </div>
+  </div>
+</div>

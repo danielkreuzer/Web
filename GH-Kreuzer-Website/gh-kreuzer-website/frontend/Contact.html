@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de" xmlns="http://www.w3.org/1999/html">
+
+<head>
+
+    <link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Gasthof Kreuzer</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog-home.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Frank Ruhl Libre', cursive;
+        }
+    </style>
+
+
+</head>
+
+<body class="d-flex flex-column">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <div class="headerpic" id="header">
+            <!-- img-fluid makes picture height responsive to -->
+            <img src="img/layout/logoDetailseiteKontakt.png" class="img-fluid" alt="Logo GH-Kreuzer" width="800" height="100">
+        </div>
+        <!--<a class="navbar-brand" href="#">Gasthof Kreuzer</a>-->
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="gh.html">Gasthof
+
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Kellerbar.html">Kellerbar </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Kontakt<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="shop.html">Shop</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container flex-grow">
+    <div class="row">
+        <h1 class="mx-auto my-4 col-lg-10 text-center">Kontakt <br>
+            <small>Ihre Anfrage an Gasthof Kreuzer</small>
+        </h1>
+
+        <div class="container">
+            <form id="gform" method="POST" class="pure-form pure-form-stacked" data-email="gasthof.kreuzer@gmail.com"
+                  action="https://script.google.com/macros/s/AKfycby1aYIrDkKx6P8t7ZW4I4BiOsgjUbCexRAdJtoXd3lFuI9AaPsh/exec">
+                <!-- change the form action to your script url -->
+
+                <fieldset class="pure-group">
+                    <label for="name">Name*: </label>
+                    <input id="name" class="form-control" required="required" name="name" placeholder="Max Mustermann" />
+                </fieldset>
+                <br>
+                <fieldset class="pure-group">
+                    <label for="Nachricht">Nachricht*: </label>
+                    <textarea id="Nachricht" class="form-control" required ="required" name="Nachricht" rows="10"
+                              placeholder="Ihre Nachricht an uns!"></textarea>
+                </fieldset>
+                <br>
+                <fieldset class="pure-group">
+                    <label for="email">Email-Adresse*:</label>
+                    <input class="form-control" id="email" name="email" type="email" value=""
+                           required="required" placeholder="max@mustermann.at"/>
+                    <span id="email-invalid" style="display:none">
+                            Bitte geben Sie eine gültige Email-Adresse ein!</span>
+                </fieldset>
+                <br>
+                <fieldset class="pure-group">
+                    <label for="Telefonnummer">Telefonnummer: </label>
+                    <input class="form-control" id="Telefonnummer" name="Telefonnummer" placeholder="optional" />
+                </fieldset>
+                <br>
+                <p class="font-weight-light">* Pflichtfelder</p>
+
+                <button class="btn btn-success btn-send">
+                    <i class="fa fa-paper-plane"></i>&nbsp;Abschicken</button>
+
+            </form>
+
+            <!-- Customise the Thankyou Message People See when they submit the form: -->
+            <div class="text-center" style="display:none;" id="thankyou_message">
+                <h2><em>Danke</em> für Ihre Anfrage!<br></h2>
+                    <h3>Ihre Anfrage ist erfolgreich bei uns eingegangen, wir werden uns so bald wie möglich bei Ihnen melden!</h3>
+            </div>
+
+            <!-- Submit the Form to Google Using "AJAX" -->
+            <script data-cfasync="false" type="text/javascript"
+                    src="./js/email-submission-handler.js"></script>
+        </div>
+
+        <div class="col-lg-10 mx-auto text-center">
+            <br>
+            <h4>
+                <strong>Gasthof Kreuzer</strong>
+            </h4>
+            <p>Marktplatz 4
+                <br>4193 Reichenthal</p>
+            <ul class="list-unstyled">
+                <li>
+                    <i class="fa fa-phone fa-fw"></i>
+                    07214 4046</li>
+                <li>
+                    <i class="fa fa-envelope-o fa-fw"></i>
+                    <a href="mailto:gasthof.kreuzer@gmail.com">gasthof.kreuzer@gmail.com</a>
+                </li>
+                <li>
+                    <br>
+                    <i class="fa fa-clock-o fa-fw"></i>
+                    <a class="text-primary">Öffnungszeiten</a>
+                </li>
+                <li>
+                    <a class="text-muted">Montag</a> <br>
+                    Ruhetag <br>
+                    <a class="text-muted">Dienstag - Donnerstag</a> <br>
+                    09:00 - 13:00 | 16:00 - 02:00<br>
+                    <a class="text-muted">Freitag - Samstag</a> <br>
+                    09:00 - 04:00 <br>
+                    <a class="text-muted">Sonntag</a> <br>
+                    09:00 - 20:00
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">^</button>
+
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+        <div class="container text-center">
+            <p class="m-0 text-white">Copyright &copy; Gasthof Kreuzer 2018</p><br>
+            <a class="text-primary" href="impressum.html" id="impressum">Impressum</a>
+        </div>
+    <!-- /.container -->
+</footer>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.bundle.js"></script>
+<script src="js/blog-home.js"></script>
+
+<!-- Own JavaScipt -->
+<script src="js/post-handling-kellerbar.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<ng-container *ngIf="Stations.length > 0">
+<div>
+  <wea5-wetr-search-item
+    *ngFor="let s of Stations"
+    [stationId]="s.id"
+    [queryMode]="0"></wea5-wetr-search-item>
+</div>
+</ng-container>
+<ng-container *ngIf="Stations.length < 1">
+  <div>
+    <pfng-card
+               [headerTemplate]="spacesHeaderTemplate">
+      <ng-template #spacesHeaderTemplate>
+        <h2 class="card-pf-title">
+          Nothing found!
+        </h2>
+      </ng-template>
+      <div align="center">
+        <h3>No station found for this Community</h3>
+      </div>
+    </pfng-card>
+  </div>
+</ng-container>
